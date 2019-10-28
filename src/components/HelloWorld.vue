@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button class="success" @click="deploy"/>
   </div>
 </template>
 
@@ -17,9 +18,17 @@ export default {
       console.log('connected')
     },
 
-    my_response(msg) {
+    server_response(msg) {
       // eslint-disable-next-line no-console
-      console.log("receive message", msg)
+      console.log("client receive message", msg)
+    }
+  },
+
+  methods: {
+    deploy() {
+      // eslint-disable-next-line no-console
+      console.log("click button")
+      this.$socket.emit("client_event", "I am client, click deploy")
     }
   }
 }
