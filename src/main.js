@@ -5,6 +5,18 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import VueSocketIO from 'vue-socket.io'
+
+Vue.use(new VueSocketIO({
+    debug: true,
+    connection: 'http://10.1.69.101:5000',
+    vuex: {
+        store,
+        actionPrefix: 'SOCKET_',
+        mutationPrefix: 'SOCKET_'
+    },
+}))
+
 new Vue({
   store,
   router,
